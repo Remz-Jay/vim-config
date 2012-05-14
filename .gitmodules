@@ -28,3 +28,12 @@
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/PIV"]
+	path = .vim/bundle/PIV
+	url = https://github.com/spf13/PIV.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = http://github.com/ervandew/supertab
+[submodule ".vim/bundle/delimitMate"]
+	path = .vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
