@@ -38,5 +38,5 @@
 	path = .vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule ".vim/ftplugin/jslint.vim"]
-	path = .vim/ftplugin/jslint.vim
+	path = .vim/bundle/jslint.vim
 	url = https://github.com/hallettj/jslint.vim.git
