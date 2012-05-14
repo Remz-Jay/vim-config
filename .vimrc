@@ -1,4 +1,4 @@
-" Modified: Mon 14 May 2012 12:25:29 PM CEST 
+" Modified: Mon 14 May 2012 01:43:27 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -12,6 +12,7 @@ catch
 endtry
 
 call pathogen#infect()
+call pathogen#helptags()
 set ai                 " always set autoindenting on
 " File-type
 filetype on
@@ -24,7 +25,7 @@ set backspace=eol,start,indent
 silent execute '!mkdir -p ~/.vimbackup'
 set backupdir=~/.vimbackup/
 set backupskip=/tmp/*,/private/tmp/*
-helptags ~/.vim/doc
+"helptags ~/.vim/doc
 set backup             " keep a backup file
 set cindent
 set complete=k,.,w,b,u,t,i
