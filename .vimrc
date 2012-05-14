@@ -1,4 +1,4 @@
-" Modified: Wed 25 Apr 2012 07:25:32 PM CEST 
+" Modified: Mon 14 May 2012 11:31:21 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -11,6 +11,7 @@ try
 catch
 endtry
 
+call pathogen#infect()
 set ai                 " always set autoindenting on
 " File-type
 filetype on

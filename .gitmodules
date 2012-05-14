@@ -1,0 +1,30 @@
+[submodule ".vim/bundle/Command-T"]
+	path = .vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/taglist-plus"]
+	path = .vim/bundle/taglist-plus
+	url = https://github.com/vim-scripts/taglist-plus.git
+[submodule ".vim/bundle/timestamp.vim"]
+	path = .vim/bundle/timestamp.vim
+	url = https://github.com/vim-scripts/timestamp.vim.git
+[submodule ".vim/bundle/vcsbzr.vim"]
+	path = .vim/bundle/vcsbzr.vim
+	url = https://github.com/vim-scripts/vcsbzr.vim.git
+[submodule ".vim/bundle/vcscommand.vim"]
+	path = .vim/bundle/vcscommand.vim
+	url = https://github.com/harleypig/vcscommand.vim.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
