@@ -1,4 +1,4 @@
-" Modified: Mon 14 May 2012 01:43:27 PM CEST 
+" Modified: Mon 14 May 2012 01:55:05 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -272,7 +272,7 @@ cnoremap <C-N> <Down>
 
 
 " Set up pretty colors
-if &term ==? "xterm-256color" || &term ==? "screen-256color-bce"
+if &term ==? "xterm-256color" || &term ==? "screen-256color-bce" || &term ==? "screen-256color"
 	set t_Co=256
 	colorscheme inkpot
 else
