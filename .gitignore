@@ -1,3 +1,4 @@
 .vim/view
 .vim/.netrwhist
 .vim/sessions
+.vim/*/doc/tags
