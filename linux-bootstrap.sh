@@ -1,12 +1,21 @@
 #!/bin/bash
-if [ -e ~/.vim ] || [ -L ~/.vim ]
+
+# Take home dir as parameter for use in puppet script
+if [[ -z $1 ]]
 then
-	rm -rf ~/.vim
+	home=~
+else
+	home=$1
 fi
-if [ -e ~/.vimrc ] || [ -L ~/.vimrc ]
+
+if [ -e $home/.vim ] || [ -L $home/.vim ]
 then
-	rm -f ~/.vimrc
+	rm -rf $home/.vim
 fi
-ln -s ${PWD##*/}/.vim ~/.vim
-ln -s ${PWD##*/}/.vimrc ~/.vimrc
-git submodule update --init
+if [ -e $home/.vimrc ] || [ -L $home/.vimrc ]
+then
+	rm -f $home/.vimrc
+fi
+ln -s ${PWD##*/}/.vim $home/.vim
+ln -s ${PWD##*/}/.vimrc $home/.vimrc
+#git submodule update --init
