@@ -18,4 +18,4 @@ then
 fi
 ln -s ${PWD##*/}/.vim $home/.vim
 ln -s ${PWD##*/}/.vimrc $home/.vimrc
-#git submodule update --init
+git submodule update --init
