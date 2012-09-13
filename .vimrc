@@ -1,4 +1,4 @@
-" Modified: Wed 12 Sep 2012 11:37:04 PM CEST 
+" Modified: Thu 13 Sep 2012 08:36:19 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -99,6 +99,19 @@ set mouse=a
 syntax enable
 
 
+" Set up pretty colors
+let myColorscheme = 'inkpot'
+if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
+	let myColorscheme = 'typofree'
+endif
+if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
+	set t_Co=256
+	execute "colorscheme ".myColorscheme
+else
+	colorscheme default
+endif
+
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -112,9 +125,9 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 
 
 " Fast editing of the colorscheme
-map <leader>co :tabedit! ~/.vim/colors/typofree.vim<cr>
-" When vimrc is edited, reload it
-autocmd! bufwritepost ~/.vim/colors/typofree.vim colorscheme typofree
+silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>"
+" When colorscheme is edited, reload it
+autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 
 
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
@@ -275,15 +288,6 @@ cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-
-" Set up pretty colors
-if &term ==? "xterm-256color" || &term ==? "screen-256color-bce" || &term ==? "screen-256color"
-	set t_Co=256
-	colorscheme typofree
-else
-	colorscheme default
-endif
 
 
 " command-T
