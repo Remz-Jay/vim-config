@@ -1,4 +1,4 @@
-" Modified: Wed 12 Sep 2012 11:34:27 PM CEST 
+" Modified: Wed 12 Sep 2012 11:37:04 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -37,6 +37,7 @@ set incsearch          " Incremental search on - Show match as search is typed
 "set ignorecase         " Ignore the case when searching
 "set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
+set lazyredraw         " Don't redraw while executing macros (good performance config)
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
 set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
