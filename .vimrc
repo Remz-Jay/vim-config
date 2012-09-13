@@ -1,4 +1,4 @@
-" Modified: Mon 14 May 2012 01:55:05 PM CEST 
+" Modified: Thu 13 Sep 2012 08:36:19 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -7,12 +7,13 @@ set encoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos,mac
 try
-    lang en_US
+	lang en_US
 catch
 endtry
 
 call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#helptags() " This is slooooooow
+
 set ai                 " always set autoindenting on
 " File-type
 filetype on
@@ -22,20 +23,21 @@ filetype indent on
 " allow <BkSpc> to delete line breaks, beyond the start of the current 
 " insertion, and over indentations:
 set backspace=eol,start,indent
-silent execute '!mkdir -p ~/.vimbackup'
-set backupdir=~/.vimbackup/
+silent execute '!mkdir -p ~/.vim/backup'
+set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
 "helptags ~/.vim/doc
 set backup             " keep a backup file
 set cindent
 set complete=k,.,w,b,u,t,i
-set directory=~/.vimbackup,/tmp " This is where the swapfiles go
+set directory=~/.vim/backup,/tmp " This is where the swapfiles go
 set history=1000       " keep 50 lines of command line history
 set undolevels=1000
 set incsearch          " Incremental search on - Show match as search is typed
 "set ignorecase         " Ignore the case when searching
 "set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
+set lazyredraw         " Don't redraw while executing macros (good performance config)
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
 set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
@@ -54,7 +56,7 @@ set ruler              " show the cursor position all the time
 "if exists('+colorcolumn')
 "	set colorcolumn=+1
 "endif
-set number						 " Show line numbers
+"set number						 " Show line numbers
 set scrolloff=3        " Keep 3 lines above and below the cursor
 set shell=/bin/bash    " Shell to use for ! and :! commands
 set shiftwidth=2
@@ -73,10 +75,10 @@ set ttyfast            " We're running on a fast terminal
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
 "  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
+"  :50  :  up to 50 lines of command-line history will be remembered
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
+set viminfo='10,\"100,:50,%,n~/.viminfo
 set visualbell         " Better than a beep
 set nowrap             " Don't wrap long lines
 set whichwrap=<,>,h,l,~,[,]   " Left/right motion line wrap
@@ -97,6 +99,19 @@ set mouse=a
 syntax enable
 
 
+" Set up pretty colors
+let myColorscheme = 'inkpot'
+if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
+	let myColorscheme = 'typofree'
+endif
+if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
+	set t_Co=256
+	execute "colorscheme ".myColorscheme
+else
+	colorscheme default
+endif
+
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -110,9 +125,9 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 
 
 " Fast editing of the colorscheme
-map <leader>co :tabedit! ~/.vim/colors/inkpot.vim<cr>
-" When vimrc is edited, reload it
-autocmd! bufwritepost ~/.vim/colors/inkpot.vim colorscheme inkpot
+silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>"
+" When colorscheme is edited, reload it
+autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 
 
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
@@ -123,6 +138,10 @@ nnoremap ; :
 nmap <F2> :w<C-M>
 nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
+
+
+" Use system-wide clipboard
+set clipboard+=unnamed
 
 
 " Copy to clipboard
@@ -269,15 +288,6 @@ cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-
-" Set up pretty colors
-if &term ==? "xterm-256color" || &term ==? "screen-256color-bce" || &term ==? "screen-256color"
-	set t_Co=256
-	colorscheme inkpot
-else
-	colorscheme default
-endif
 
 
 " command-T

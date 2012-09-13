@@ -54,3 +54,7 @@
 	path = .vim/bundle/jslint.vim
 	url = https://github.com/hallettj/jslint.vim.git
 	ignore = untracked
+[submodule ".vim/bundle/zencoding-vim"]
+	path = .vim/bundle/zencoding-vim
+	url = https://github.com/mattn/zencoding-vim.git
+	ignore = untracked
