@@ -26,6 +26,14 @@
 	path = .vim/bundle/timestamp.vim
 	url = https://github.com/vim-scripts/timestamp.vim.git
 	ignore = untracked
+[submodule ".vim/bundle/vcsbzr.vim"]
+	path = .vim/bundle/vcsbzr.vim
+	url = https://github.com/vim-scripts/vcsbzr.vim.git
+	ignore = untracked
+[submodule ".vim/bundle/vcscommand.vim"]
+	path = .vim/bundle/vcscommand.vim
+	url = https://github.com/harleypig/vcscommand.vim.git
+	ignore = untracked
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
