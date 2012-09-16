@@ -1,4 +1,4 @@
-" Modified: Sun 16 Sep 2012 09:26:20 PM UTC 
+" Modified: Mon 17 Sep 2012 12:01:37 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -34,7 +34,7 @@ set history=1000       " keep 50 lines of command line history
 set undolevels=1000
 set incsearch          " Incremental search on - Show match as search is typed
 "set ignorecase         " Ignore the case when searching
-"set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
+set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
@@ -169,10 +169,6 @@ nmap <f9> :%s/\s\+$//
 vmap <f9> :s/\s\+$//
 
 
-" Show trailing spaces
-autocmd Syntax * syn match WhiteSpace /\s\+$\| \+\ze\t/
-
-
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -304,7 +300,7 @@ map <leader>p :cp<cr>
 
 
 " Stupid shift key fixes
-cmap W w
+"cmap W w
 cmap WQ wq
 cmap wQ wq
 cmap Q q

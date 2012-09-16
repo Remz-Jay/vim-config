@@ -1,4 +1,4 @@
-" Modified: Thu 13 Sep 2012 08:35:04 PM CEST 
+" Modified: Sun 16 Sep 2012 11:56:11 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -12,7 +12,6 @@ catch
 endtry
 
 call pathogen#infect()
-"call pathogen#helptags() " This is slooooooow
 
 set ai                 " always set autoindenting on
 " File-type
@@ -35,7 +34,7 @@ set history=1000       " keep 50 lines of command line history
 set undolevels=1000
 set incsearch          " Incremental search on - Show match as search is typed
 "set ignorecase         " Ignore the case when searching
-"set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
+set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
@@ -43,7 +42,6 @@ set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
 set foldminlines=5
 set foldlevelstart=1
-let php_folding = 1
 set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
@@ -127,7 +125,7 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 " Fast editing of the colorscheme
 silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>"
 " When colorscheme is edited, reload it
-autocmd! bufwritepost "~/.vim/colors/*.vim" execute "colorscheme ".myColorscheme
+autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 
 
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
@@ -171,8 +169,24 @@ nmap <f9> :%s/\s\+$//
 vmap <f9> :s/\s\+$//
 
 
-" Show trailing spaces
-autocmd Syntax * syn match WhiteSpace /\s\+$\| \+\ze\t/
+augroup WhitespaceMatch
+  " Remove ALL autocommands for the WhitespaceMatch group.
+  autocmd!
+  autocmd BufWinEnter * let w:whitespace_match_number = matchadd('WhiteSpace', '\s\+$')
+  autocmd InsertEnter * call s:ToggleWhitespaceMatch('i')
+  autocmd InsertLeave * call s:ToggleWhitespaceMatch('n')
+augroup END
+function! s:ToggleWhitespaceMatch(mode)
+  let pattern = (a:mode == 'i') ? '\s\+\%#\@<!$' : '\s\+$'
+  if exists('w:whitespace_match_number')
+    call matchdelete(w:whitespace_match_number)
+    call matchadd('WhiteSpace', pattern, 10, w:whitespace_match_number)
+  else
+    " Something went wrong, try to be graceful.
+    let w:whitespace_match_number =  matchadd('WhiteSpace', pattern)
+  endif
+endfunction
+
 
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
@@ -226,8 +240,8 @@ inoremap kj <Esc>
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-set hlsearch
-map <C-\> :nohlsearch<CR>
+	set hlsearch
+	map <C-\> :nohlsearch<CR>
 endif
 
 
@@ -301,19 +315,22 @@ noremap <leader>y :CommandTFlush<cr>
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>ccc :botright cope 20<cr>
 map <leader>\ :ccl<CR>
-map <leader>n :cn<cr
+map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+
 " Stupid shift key fixes
-cmap W w
+"cmap W w
 cmap WQ wq
 cmap wQ wq
 cmap Q q
+
 
 " Tagbar http://majutsushi.github.com/tagbar/
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
 "au BufWinEnter *.js TagbarOpen
+"au BufWinEnter *.php TagbarOpen
 
 
 " restore debug.vim from ~/.vim/plugins/attic
