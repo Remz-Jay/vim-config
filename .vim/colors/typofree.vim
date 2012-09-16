@@ -84,7 +84,7 @@ hi Define        ctermfg=28    ctermbg=NONE  cterm=NONE " function new
 hi Statement     ctermfg=130   ctermbg=NONE  cterm=NONE " $ = : . return if exit for
 hi Conditional   ctermfg=130   ctermbg=NONE  cterm=NONE " if then else
 hi Repeat        ctermfg=130   ctermbg=NONE  cterm=NONE " foreach while
-hi Label         ctermfg=130   ctermbg=NONE  cterm=NONE " 
+hi Label         ctermfg=130   ctermbg=NONE  cterm=NONE "
 
 hi Operator      ctermfg=215   ctermbg=NONE  cterm=NONE " $ = : . return if exit for
 
@@ -100,8 +100,8 @@ hi SpecialChar   ctermfg=88    ctermbg=NONE  cterm=NONE " hex, ocatal etc.
 
 " User defined colors
 hi User1         ctermfg=88    ctermbg=236   cterm=bold " mark a modification in the status line
-hi User2         ctermfg=88    ctermbg=236   cterm=NONE " mark readonly in status line
+hi User2         ctermfg=88    ctermbg=236   cterm=NONE " mark readonly in status lines
 
-hi WhiteSpace    ctermfg=NONE  ctermbg=234   cterm=NONE " trailing whitespace
+hi ShowTrailingWhitespace  ctermfg=NONE  ctermbg=52  cterm=NONE " trailing whitespace
 
 hi TagbarHighlight ctermfg=231   ctermbg=60    cterm=NONE
