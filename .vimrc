@@ -1,4 +1,4 @@
-" Modified: Thu 13 Sep 2012 08:36:19 PM CEST 
+" Modified: Sun 16 Sep 2012 09:26:20 PM UTC 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -12,7 +12,6 @@ catch
 endtry
 
 call pathogen#infect()
-"call pathogen#helptags() " This is slooooooow
 
 set ai                 " always set autoindenting on
 " File-type
@@ -43,7 +42,6 @@ set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
 set foldminlines=5
 set foldlevelstart=1
-let php_folding = 1
 set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
@@ -226,8 +224,8 @@ inoremap kj <Esc>
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-set hlsearch
-map <C-\> :nohlsearch<CR>
+	set hlsearch
+	map <C-\> :nohlsearch<CR>
 endif
 
 
@@ -301,8 +299,9 @@ noremap <leader>y :CommandTFlush<cr>
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>ccc :botright cope 20<cr>
 map <leader>\ :ccl<CR>
-map <leader>n :cn<cr
+map <leader>n :cn<cr>
 map <leader>p :cp<cr>
+
 
 " Stupid shift key fixes
 cmap W w
@@ -310,10 +309,12 @@ cmap WQ wq
 cmap wQ wq
 cmap Q q
 
+
 " Tagbar http://majutsushi.github.com/tagbar/
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
 "au BufWinEnter *.js TagbarOpen
+"au BufWinEnter *.php TagbarOpen
 
 
 " restore debug.vim from ~/.vim/plugins/attic
