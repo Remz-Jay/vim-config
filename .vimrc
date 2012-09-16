@@ -1,4 +1,4 @@
-" Modified: Mon 17 Sep 2012 12:01:37 AM CEST 
+" Modified: Sun 16 Sep 2012 10:18:06 PM UTC 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -297,13 +297,6 @@ map <leader>ccc :botright cope 20<cr>
 map <leader>\ :ccl<CR>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
-
-
-" Stupid shift key fixes
-"cmap W w
-cmap WQ wq
-cmap wQ wq
-cmap Q q
 
 
 " Tagbar http://majutsushi.github.com/tagbar/
