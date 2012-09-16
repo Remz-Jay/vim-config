@@ -1,4 +1,4 @@
-" Modified: Sun 16 Sep 2012 10:18:06 PM UTC 
+" Modified: Sun 16 Sep 2012 10:20:20 PM UTC 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -165,8 +165,8 @@ au BufWinEnter quickfix au!
 
 
 " Delete trailing whitespace
-nmap <f9> :%s/\s\+$//
-vmap <f9> :s/\s\+$//
+nmap <leader>wd :%s/\s\+$//<cr>
+vmap <leader>wd :s/\s\+$//<cr>
 
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
