@@ -1,4 +1,4 @@
-" Modified: Thu 13 Sep 2012 08:36:19 PM CEST 
+" Modified: Mon 17 Sep 2012 11:50:27 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -56,7 +56,6 @@ set ruler              " show the cursor position all the time
 "if exists('+colorcolumn')
 "	set colorcolumn=+1
 "endif
-"set number						 " Show line numbers
 set scrolloff=3        " Keep 3 lines above and below the cursor
 set shell=/bin/bash    " Shell to use for ! and :! commands
 set shiftwidth=2
@@ -101,9 +100,15 @@ syntax enable
 
 " Set up pretty colors
 let myColorscheme = 'inkpot'
+
+" Personal preferences for users
 if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
 	let myColorscheme = 'typofree'
 endif
+if $USER == 'remco'
+	set number "show line numbers
+endif
+
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
