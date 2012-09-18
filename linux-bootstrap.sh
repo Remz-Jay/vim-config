@@ -25,5 +25,9 @@ git submodule update --init
 
 # Compile command-t for our ruby version
 cd $home/${PWD##*/}/.vim/bundle/Command-T/ruby/command-t
-ruby extconf.rb
-make
+if [ -e `which ruby` ]; then
+	ruby extconf.rb
+	if [ -e `which make` ]; then
+		make
+	fi
+fi
