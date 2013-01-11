@@ -2,3 +2,4 @@
 .vim/.netrwhist
 .vim/sessions
 .vim/*/doc/tags
+.vim/backup/*

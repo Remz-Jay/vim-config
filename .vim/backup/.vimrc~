@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-" Modified: Mon 17 Sep 2012 11:50:27 AM CEST 
-=======
-" Modified: Sun 16 Sep 2012 10:20:20 PM UTC 
->>>>>>> tuurlijk/master
+" Modified: Sun 16 Sep 2012 11:56:11 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -58,6 +54,7 @@ set ruler              " show the cursor position all the time
 "if exists('+colorcolumn')
 "	set colorcolumn=+1
 "endif
+"set number						 " Show line numbers
 set scrolloff=3        " Keep 3 lines above and below the cursor
 set shell=/bin/bash    " Shell to use for ! and :! commands
 set shiftwidth=2
@@ -102,15 +99,9 @@ syntax enable
 
 " Set up pretty colors
 let myColorscheme = 'inkpot'
-
-" Personal preferences for users
 if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
 	let myColorscheme = 'typofree'
 endif
-if $USER == 'remco'
-	set number "show line numbers
-endif
-
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
@@ -174,8 +165,28 @@ au BufWinEnter quickfix au!
 
 
 " Delete trailing whitespace
-nmap <leader>wd :%s/\s\+$//<cr>
-vmap <leader>wd :s/\s\+$//<cr>
+nmap <f9> :%s/\s\+$//
+vmap <f9> :s/\s\+$//
+
+
+augroup WhitespaceMatch
+  " Remove ALL autocommands for the WhitespaceMatch group.
+  autocmd!
+  autocmd BufWinEnter * let w:whitespace_match_number = matchadd('WhiteSpace', '\s\+$')
+  autocmd InsertEnter * call s:ToggleWhitespaceMatch('i')
+  autocmd InsertLeave * call s:ToggleWhitespaceMatch('n')
+augroup END
+function! s:ToggleWhitespaceMatch(mode)
+  let pattern = (a:mode == 'i') ? '\s\+\%#\@<!$' : '\s\+$'
+  if exists('w:whitespace_match_number')
+    call matchdelete(w:whitespace_match_number)
+    call matchadd('WhiteSpace', pattern, 10, w:whitespace_match_number)
+  else
+    " Something went wrong, try to be graceful.
+    let w:whitespace_match_number =  matchadd('WhiteSpace', pattern)
+  endif
+endfunction
+
 
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
@@ -306,6 +317,13 @@ map <leader>ccc :botright cope 20<cr>
 map <leader>\ :ccl<CR>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
+
+
+" Stupid shift key fixes
+"cmap W w
+cmap WQ wq
+cmap wQ wq
+cmap Q q
 
 
 " Tagbar http://majutsushi.github.com/tagbar/

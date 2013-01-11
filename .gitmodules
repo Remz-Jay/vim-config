@@ -26,21 +26,9 @@
 	path = .vim/bundle/timestamp.vim
 	url = https://github.com/vim-scripts/timestamp.vim.git
 	ignore = untracked
-[submodule ".vim/bundle/vcsbzr.vim"]
-	path = .vim/bundle/vcsbzr.vim
-	url = https://github.com/vim-scripts/vcsbzr.vim.git
-	ignore = untracked
-[submodule ".vim/bundle/vcscommand.vim"]
-	path = .vim/bundle/vcscommand.vim
-	url = https://github.com/harleypig/vcscommand.vim.git
-	ignore = untracked
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-	ignore = untracked
-[submodule ".vim/bundle/PIV"]
-	path = .vim/bundle/PIV
-	url = https://github.com/spf13/PIV.git
 	ignore = untracked
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
@@ -54,7 +42,12 @@
 	path = .vim/bundle/jslint.vim
 	url = https://github.com/hallettj/jslint.vim.git
 	ignore = untracked
-[submodule ".vim/bundle/zencoding-vim"]
-	path = .vim/bundle/zencoding-vim
-	url = https://github.com/mattn/zencoding-vim.git
-	ignore = untracked
+[submodule ".vim/bundle/ShowTrailingWhitespace"]
+	path = .vim/bundle/ShowTrailingWhitespace
+	url = https://github.com/vim-scripts/ShowTrailingWhitespace.git
+[submodule ".vim/bundle/css-color"]
+	path = .vim/bundle/css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule ".vim/bundle/sparkup"]
+	path = .vim/bundle/sparkup
+	url = https://github.com/tristen/vim-sparkup.git
