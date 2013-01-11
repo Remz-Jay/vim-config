@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-" Modified: Mon 17 Sep 2012 11:50:27 AM CEST 
-=======
-" Modified: Sun 16 Sep 2012 10:20:20 PM UTC 
->>>>>>> tuurlijk/master
+" Modified: Fri 11 Jan 2013 02:59:44 PM CET 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
