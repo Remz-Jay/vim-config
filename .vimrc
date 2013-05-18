@@ -1,4 +1,4 @@
-" Modified: Fri 11 Jan 2013 02:59:44 PM CET 
+" Modified: Sat 18 May 2013 01:52:49 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -92,6 +92,9 @@ set wildignore+=*.DS_Store,*.o,*.obj,.git,.svn,*.pyc " Ignore certain files in w
 set formatoptions-=t
 set textwidth=79
 set mouse=a
+
+" powerline statusbar
+set rtp+=/Users/remco/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
 syntax enable
 
