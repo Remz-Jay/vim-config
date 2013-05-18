@@ -19,9 +19,10 @@ then
 fi
 ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
+ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
 
 # Initialize submodules
-git submodule update --init
+git submodule update --init --recursive
 
 # Compile command-t for our ruby version
 cd $home/${PWD##*/}/.vim/bundle/Command-T/ruby/command-t

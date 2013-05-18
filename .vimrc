@@ -1,4 +1,4 @@
-" Modified: Sat 18 May 2013 10:10:58 PM CEST 
+" Modified: Sat 18 May 2013 11:04:06 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -115,6 +115,7 @@ endif
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
+	let g:solarized_termtrans = 1
 else
 	colorscheme default
 endif
@@ -146,7 +147,6 @@ nnoremap ; :
 nmap <F2> :w<C-M>
 nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
-
 
 " Use system-wide clipboard
 set clipboard+=unnamed
