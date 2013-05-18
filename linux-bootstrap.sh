@@ -20,7 +20,9 @@ fi
 ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
-
+ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
+ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
+ 
 # Initialize submodules
 git submodule update --init --recursive
 
