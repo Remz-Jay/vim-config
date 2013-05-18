@@ -1,4 +1,4 @@
-" Modified: Sat 18 May 2013 02:59:10 AM CEST 
+" Modified: Sat 18 May 2013 10:10:58 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -94,7 +94,7 @@ set textwidth=79
 set mouse=a
 
 " powerline statusbar
-set rtp+=/Users/remco/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 syntax enable
 
