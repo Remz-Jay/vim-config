@@ -45,7 +45,19 @@ plugins=(brew composer forklift git git-extras github history history-substring-
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/Users/remco/.rvm/gems/ruby-1.9.3-p362/bin:/Users/remco/.rvm/gems/ruby-1.9.3-p362@global/bin:/Users/remco/.rvm/rubies/ruby-1.9.3-p362/bin:/Users/remco/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/remco/.rvm/gems/ruby-1.9.3-p362/bin:/Users/remco/.rvm/gems/ruby-1.9.3-p362@global/bin:/Users/remco/.rvm/rubies/ruby-1.9.3-p362/bin:/Users/remco/.rvm/bin:/usr/local/sbin:/usr/local/zend/bin:/usr/local/zend/mysql/bin:/usr/local/zend/bin:/usr/local/zend/mysql/bin
+export PATH=\
+/usr/local/bin:\
+/usr/local/sbin:\
+/Users/remco/.rvm/gems/ruby-1.9.3-p362/bin:\
+/Users/remco/.rvm/gems/ruby-1.9.3-p362@global/bin:\
+/Users/remco/.rvm/rubies/ruby-1.9.3-p362/bin:\
+/Users/remco/.rvm/bin:\
+/usr/bin:\
+/bin:\
+/usr/sbin:\
+/sbin:\
+/opt/X11/bin:\
+$PATH
 
 function powerline_precmd() {
 	export PS1="$(~/powerline-shell.py $? --shell zsh)"
