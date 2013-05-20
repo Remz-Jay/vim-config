@@ -1,4 +1,4 @@
-" Modified: Sat 18 May 2013 11:04:06 PM CEST 
+" Modified: Tue 21 May 2013 12:04:24 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -157,7 +157,7 @@ map <leader>c "+y<cr>
 
 
 " Let's see some useful info in the status line
-set statusline=%f\ %1*%m%*%=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %{fugitive#statusline()}\ %2*%r%*%w\ %l,%c-%v/%L\ %P
+" set statusline=%f\ %1*%m%*%=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %{fugitive#statusline()}\ %2*%r%*%w\ %l,%c-%v/%L\ %P
 
 
 " Session management
@@ -323,9 +323,11 @@ let g:tagbar_usearrows = 1
 
 
 " Start NERDTree
-"autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree
 " Move cursor to main window
-"autocmd VimEnter * wincmd p
-
+autocmd VimEnter * wincmd p
+" Close vim if NERDTree is the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <leader>t :NERDTreeToggle<cr>
 
 " http://amix.dk/vim/vimrc.html
