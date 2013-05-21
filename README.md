@@ -38,6 +38,28 @@ On OSX you will also need a patched font for powerline to work right. The
 required patched fonts are conveniently cloned along with this repository.
 See the [font-installation manual for
 powerline](https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation) for further instructions.
+
+## Troubleshooting
+It might be the case that the `Command-T` vim plugin causes a segfault on your system when you use the bootstrap script.
+This is due to the fact that it was compiled for a different architecture than your vim.
+See the [Command-T manual](http://git.wincent.com/command-t.git/blob_plain/HEAD:/doc/command-t.txt) for instructions.
+
+Specifically:
+
+````
+ First you have to check the platform Vim was built for:
+
+  vim --version
+  ...
+  Compilation: gcc ... -arch i386 ...
+  ...
+
+and make sure you use the correct ARCHFLAGS during compilation:
+
+  export ARCHFLAGS="-arch i386"
+  make
+````
+
 ## Credits 
 
 The entire setup is based on Michiel Roos' configuration. You can say thanks at [@TuurlijkNiet][1]
