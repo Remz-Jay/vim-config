@@ -11,12 +11,25 @@ fi
 # Create symlinks
 if [ -e $home/.vim ] || [ -L $home/.vim ]
 then
-	rm -rf $home/.vim
+	mv $home/.vim $home/.vim.original
 fi
 if [ -e $home/.vimrc ] || [ -L $home/.vimrc ]
 then
-	rm -f $home/.vimrc
+	mv $home/.vimrc $home/.vimrc.original
 fi
+if [ -e $home/.tmux.conf ] || [ -L $home/.tmux.conf ]
+then
+  mv $home/.tmux.conf $home/.tmux.conf.original
+fi
+if [ -e $home/.bashrc ] || [ -L $home/.bashrc ]
+then
+  mv $home/.bashrc $home/.bashrc.original
+fi
+if [ -e $home/.zshrc ] || [ -L $home/.zshrc ]
+then
+	mv $home/.zshrc $home/.zshrc.original
+fi
+
 ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
