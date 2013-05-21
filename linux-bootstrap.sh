@@ -8,7 +8,7 @@ else
 	home=$1
 fi
 #Install prerequisites
-if [ !-d $home/powerline-shell ]
+if [ ! -d $home/powerline-shell ]
 then
 	cd $home && git clone https://github.com/milkbikis/powerline-shell
 	cd $home/powerline-shell && ./install.py
@@ -17,7 +17,7 @@ then
 	curl https://github.com/milkbikis/powerline-shell/pull/69.patch | git apply
 	ln -s $home/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
-if [ !-d $home/.oh-my-zsh ]
+if [ ! -d $home/.oh-my-zsh ]
 then
 	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
