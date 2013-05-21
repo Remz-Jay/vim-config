@@ -7,6 +7,20 @@ then
 else
 	home=$1
 fi
+#Install prerequisites
+if [ !-d $home/powerline-shell ]
+then
+	cd $home && git clone https://github.com/milkbikis/powerline-shell
+	cd $home/powerline-shell && ./install.py
+  #Patch the arrow character in the font, as it is currently broken, see:
+  #https://github.com/milkbikis/powerline-shell/pull/69
+	curl https://github.com/milkbikis/powerline-shell/pull/69.patch | git apply
+	ln -s $home/powerline-shell/powerline-shell.py $home/powerline-shell.py
+fi
+if [ !-d $home/.oh-my-zsh ]
+then
+	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+fi
 
 # Create symlinks
 if [ -e $home/.vim ] || [ -L $home/.vim ]

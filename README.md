@@ -14,7 +14,6 @@ for linux based systems. (Which may or may not work in your situation.)
 
 ## Prerequisites
 * You have `zsh` installed
-* You have installed `oh-my-zsh` as outlined [here](https://github.com/robbyrussell/oh-my-zsh)
 * You have `tmux` installed
 * You have `vim` installed and compiled with `ruby` and `python` support
 * You have both `ruby` and `python` installed
@@ -27,6 +26,9 @@ git clone https://github.com/Remz-Jay/vim-config.git
 cd vim-config
 ./linux-bootstrap.sh
 ```
+This installer will also install `powerline-shell` and `oh-my-zsh` for you if they
+do not already exist.
+
 ## Credits 
 
 The entire setup is based on Michiel Roos' configuration. You can say thanks at [@TuurlijkNiet][1]
