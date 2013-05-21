@@ -8,7 +8,7 @@
 	ignore = untracked
 [submodule ".vim/bundle/snipmate.vim"]
 	path = .vim/bundle/snipmate.vim
-	url = https://github.com/msanders/snipmate.vim.git
+	url = git://github.com/garbas/vim-snipmate.git 
 	ignore = untracked
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
@@ -68,3 +68,15 @@
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts
+[submodule ".vim/bundle/tlib_vim"]
+	path = .vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule ".vim/bundle/mw-utils"]
+	path = .vim/bundle/mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/phpcomplete.vim"]
+	path = .vim/bundle/phpcomplete.vim
+	url = git://github.com/shawncplus/phpcomplete.vim.git

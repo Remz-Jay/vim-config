@@ -1,4 +1,4 @@
-" Modified: Tue 21 May 2013 04:05:12 PM CEST 
+" Modified: Tue 21 May 2013 05:54:12 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -11,6 +11,10 @@ try
 catch
 endtry
 
+" initialize an empty array for disabled pathogen plugins
+let g:pathogen_disabled = []
+
+" call add(g:pathogen_disabled, 'sparkup')
 call pathogen#infect()
 
 set ai                 " always set autoindenting on
@@ -330,4 +334,13 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <leader>nt :NERDTreeToggle<cr>
 
+" Sparkup
+let g:sparkupNextMapping = '<c-n>'
+let g:sparkupExecuteMapping = '<c-e>'
+
+" PHP Code completion
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" Add PHP Omni Completion to SuperTab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
 " http://amix.dk/vim/vimrc.html
