@@ -1,4 +1,4 @@
-" Modified: Tue 21 May 2013 12:04:24 AM CEST 
+" Modified: Tue 21 May 2013 04:05:12 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -296,15 +296,15 @@ cnoremap <C-N> <Down>
 
 " command-T
 let g:CommandTMaxHeight = 30
-noremap <leader>j :CommandT<cr>
-noremap <leader>y :CommandTFlush<cr>
+noremap <leader>ct :CommandT<cr>
+noremap <leader>cty :CommandTFlush<cr>
 "map <D-t> :CommandT<CR>
 
 
 " Cope
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>ccc :botright cope 20<cr>
-map <leader>\ :ccl<CR>
+map <leader>\ :ccl<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
@@ -312,9 +312,9 @@ map <leader>p :cp<cr>
 " Tagbar http://majutsushi.github.com/tagbar/
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
-"au BufWinEnter *.js TagbarOpen
-"au BufWinEnter *.php TagbarOpen
-
+au BufWinEnter *.js TagbarOpen
+au BufWinEnter *.php TagbarOpen
+map <leader>tb :TagbarToggle<cr>
 
 " restore debug.vim from ~/.vim/plugins/attic
 "let g:debuggerMaxChildren = 64
@@ -328,6 +328,6 @@ autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <leader>t :NERDTreeToggle<cr>
+map <leader>nt :NERDTreeToggle<cr>
 
 " http://amix.dk/vim/vimrc.html
