@@ -105,5 +105,7 @@ function fractal {
         echo
     done
 }
-
-#if [ "$TMUX" = "" ]; then tmux -CC attach; fi
+# Automatically start a new tmux session if none are active.
+# It would be wise to have iTerm2 keybindings set up if this line is active,
+# because tabs in iTerm2 don't work as expected anymore.
+if [ "$TMUX" = "" ]; then tmux; fi
