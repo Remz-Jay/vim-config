@@ -7,7 +7,6 @@ It consists out of:
 * A `.vimrc` with all required [Pathogen](https://github.com/tpope/vim-pathogen) modules. 
 * A `.zshrc` for use with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 * A `.tmux.conf` for use with tmux
-* `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
 
 The entire setup is primarily meant for use with Mac OS X, but is set up to be generic, so it might benefit others as well.
 
@@ -19,6 +18,8 @@ for linux based systems. (Which may or may not work in your situation.)
 * You have `tmux` installed
 * You have `vim` installed and compiled with `ruby` and `python` support
 * You have both `ruby` and `python` installed
+* `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
+
 
 ## Installation
 Installation on any Linux or OSX machine is pretty straightforward:
