@@ -59,6 +59,14 @@ and make sure you use the correct ARCHFLAGS during compilation:
   export ARCHFLAGS="-arch i386"
   make
 ````
+It also might be the case that powerline won't work in vim, showing:
+````
+An error occured while importing the Powerline package. This could be caused by an invalid sys.path setting, or by an incompatible Python version (Powerline requires Python 2.7 or 3.3+ to work). Please consult the troubleshooting section in the documentation for possible solutions.
+````
+In which case you'll have to run:
+````
+pip install --user -U git+git://github.com/Lokaltog/powerline
+````
 
 ## Credits 
 
