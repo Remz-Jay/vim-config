@@ -14,6 +14,7 @@ then
   #Patch the arrow character in the font, as it is currently broken, see:
   #https://github.com/milkbikis/powerline-shell/pull/69
 	curl https://github.com/milkbikis/powerline-shell/pull/69.patch | git apply
+	cd ..
 	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
 if [ ! -d $home/.oh-my-zsh ]
@@ -54,9 +55,9 @@ git submodule update --init --recursive
 
 # Compile command-t for our ruby version
 cd $home/${PWD##*/}/.vim/bundle/Command-T/ruby/command-t
-if [ -e `which ruby` ]; then
+if command -v ruby > /dev/null 2>&1; then
 	ruby extconf.rb
-	if [ -e `which make` ]; then
+	if command -v make > /dev/null 2>&1; then
 		make
 	fi
 fi
