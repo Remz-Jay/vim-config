@@ -1,4 +1,4 @@
-" Modified: Tue 21 May 2013 05:54:12 PM CEST 
+" Modified: Mon 29 Jul 2013 10:27:17 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -105,8 +105,8 @@ syntax enable
 
 " Set up pretty colors
 set background=dark
-let myColorscheme = 'solarized'
-" let myColorscheme = 'inkpot'
+" let myColorscheme = 'solarized'
+let myColorscheme = 'inkpot'
 
 " Personal preferences for users
 if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
