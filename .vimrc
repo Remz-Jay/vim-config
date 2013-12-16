@@ -1,4 +1,4 @@
-" Modified: Mon 29 Jul 2013 10:27:17 AM CEST 
+" Modified: Tue 19 Nov 2013 10:36:10 AM CET 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -339,7 +339,7 @@ let g:sparkupNextMapping = '<c-n>'
 let g:sparkupExecuteMapping = '<c-e>'
 
 " PHP Code completion
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " Add PHP Omni Completion to SuperTab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
