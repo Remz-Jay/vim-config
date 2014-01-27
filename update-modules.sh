@@ -7,4 +7,5 @@ git reset --hard origin/develop
 cd ../../../powerline-shell
 ./install.py
 cd ../
+fc-cache -vf ./powerline-fonts
 git status
