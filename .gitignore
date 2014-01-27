@@ -1,5 +1,7 @@
 .vim/view
+.vim/view/*
 .vim/.netrwhist
 .vim/sessions
 .vim/*/doc/tags
+vim/backup
 .vim/backup/*
