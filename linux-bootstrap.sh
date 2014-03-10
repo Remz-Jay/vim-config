@@ -10,6 +10,8 @@ fi
 #Install prerequisites
 if [ ! -d $home/powerline-shell ]
 then
+	cd $home/${PWD##*/}
+	git submodule update powerline-shell
 	cd $home/${PWD##*/}/powerline-shell && ./install.py
   #Patch the arrow character in the font, as it is currently broken, see:
   #https://github.com/milkbikis/powerline-shell/pull/69
