@@ -12,4 +12,6 @@ git stash pop
 ./install.py
 cd ../
 fc-cache -vf ./powerline-fonts
+echo Clearing VIM View Cache
+find ./.vim/view -type f -exec rm {} +
 git status
