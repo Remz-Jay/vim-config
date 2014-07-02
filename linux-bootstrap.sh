@@ -45,13 +45,19 @@ if [ -e $home/.zshrc ] || [ -L $home/.zshrc ]
 then
 	mv $home/.zshrc $home/.zshrc.original
 fi
+if [ -e $home/.config/powerline ] || [ -L $home/.config/powerline ]
+then
+	mv $home/.config/powerline $home/.config/powerline.original
+fi
+
 
 ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
 ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
 ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
- 
+ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline 
+
 # Initialize submodules
 git submodule update --init --recursive
 
