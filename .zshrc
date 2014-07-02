@@ -61,6 +61,8 @@ export PATH=\
 /opt/X11/bin:\
 $PATH
 
+export LANG=nl_NL.UTF-8
+
 function powerline_precmd() {
 	export PS1="$(~/powerline-shell.py $? --shell zsh)"
 }
