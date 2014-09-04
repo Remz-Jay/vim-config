@@ -10,6 +10,8 @@ ZSH_THEME="robbyrussell"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias jump="ssh -A -t bulwark ssh -A"
+alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-server\""
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -112,4 +114,9 @@ function fractal {
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ `uname` = Darwin ]; then
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	$HOME/tmux-launch.sh
+else
+	if [ "$TMUX" = "" ]; then tmux; fi
+fi
