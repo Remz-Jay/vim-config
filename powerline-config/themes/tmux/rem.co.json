@@ -1,53 +1,52 @@
 {
 	"default_module": "powerline.segments.common",
-	"segment_data": {
-		"uptime": {
-			"before": "⇑  "
-		},
-		"external_ip": {
-			"before": "ⓦ  "
-		},
-		"date": {
-			"before": "⌚ "
-		},
-		"email_imap_alert": {
-			"before": "✉ ",
-			"args": {
-				"username": "",
-				"password": ""
+	"segments": {	
+		"left": [
+			{
+				"function": "battery",
+				"args": {
+					"gamify": true
+				}
 			}
-		}
-	},
-	"segments": {
+		],
 		"right": [
 			{
-				"name": "external_ip",
-				"priority": 50
-			},
-			{
-				"name": "system_load",
-				"priority": 50
-			},
-			{
-				"name": "weather",
-				"priority": 50
-			},
-			{
-				"name": "date",
+				"function": "weather",
 				"args": {
-					"format": "%d-%m-%Y",
-					"istime": false
+					"unit": "C",
+					"location_query": "tilburg, netherlands"
 				}
 			},
 			{
-				"name": "date",
+				"function": "system_load"
+			},
+			{
+				"function": "external_ip",
+				"args": {
+					"query_url": "http://icanhazip.com/",
+					"interval": 600
+				}
+			},
+			{
+				"function": "date",
+        "args": {
+					"format": "%d-%m-%Y",
+				  "istime": false
+				}
+			},
+			{
+				"function": "date",
+				"name": "time",
 				"args": {
 					"format": "%H:%M",
 					"istime": true
 				}
 			},
 			{
-				"name": "hostname"
+				"function": "hostname",
+				"args": {
+					"exclude_domain": true
+				}
 			}
 		]
 	}
