@@ -120,3 +120,8 @@ if [ `uname` = Darwin ]; then
 else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
