@@ -45,6 +45,10 @@ if [ -e $home/.zshrc ] || [ -L $home/.zshrc ]
 then
 	mv $home/.zshrc $home/.zshrc.original
 fi
+if [ -e $home/tmux-launch.sh ] || [ -L $home/tmux-launch.sh ]
+then
+	mv $home/tmux-launch.sh $home/tmux-launch.sh.original
+fi
 if [ -e $home/.config/powerline ] || [ -L $home/.config/powerline ]
 then
 	mv $home/.config/powerline $home/.config/powerline.original
@@ -57,6 +61,8 @@ ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
 ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
 ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
 ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline 
+ln -s $home/${PWD##*/}/tmux-launch.sh $home/tmux-launch.sh
+chmod u+x $home/tmux-launch.sh
 
 # Initialize submodules
 git submodule update --init --recursive
