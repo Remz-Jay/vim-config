@@ -114,7 +114,7 @@ function fractal {
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
-if [ `uname` = Darwin ]; then
+if [[ -o login ]] && [ -t "$fd" ] && [ `uname` = Darwin ]; then
 	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	$HOME/tmux-launch.sh
 else
