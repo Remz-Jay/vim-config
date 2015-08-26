@@ -1,11 +1,40 @@
+source "${HOME}/vim-config/antigen/antigen.zsh"
+# plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
+antigen use oh-my-zsh
+antigen bundle brew
+antigen bundle composer
+antigen bundle forklift
+antigen bundle git
+antigen bundle git-extras
+antigen bundle github
+antigen bundle history
+antigen bundle history-substring-search
+antigen bundle jira
+antigen bundle node
+antigen bundle npm
+antigen bundle osx
+antigen bundle pow
+antigen bundle python
+antigen bundle rake
+antigen bundle symfony2
+antigen bundle textmate
+antigen bundle tmux
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle StackExchange/blackbox
+
+# antigen bundle arialdomartini/oh-my-git
+# antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+antigen theme robbyrussell
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -45,9 +74,8 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
-
-source $ZSH/oh-my-zsh.sh
+# plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
+# source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=\
@@ -79,10 +107,10 @@ function install_powerline_precmd() {
 	precmd_functions+=(powerline_precmd)
 }
 
-install_powerline_precmd
-if [[ -r ~/.credentials ]]; then
-	source ~/.credentials
-fi
+ install_powerline_precmd
+#if [[ -r ~/.credentials ]]; then
+#	source ~/.credentials
+#fi
 
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
@@ -112,17 +140,20 @@ function fractal {
         echo
     done
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export NVM_DIR=~/.nvm
+
+source $(brew --prefix nvm)/nvm.sh
+antigen apply
+
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
 if [[ -o login ]] && [ -t "$fd" ] && [ `uname` = Darwin ]; then
-	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	$HOME/tmux-launch.sh
 else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
