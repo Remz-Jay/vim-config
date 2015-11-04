@@ -86,3 +86,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule ".vim/bundle/tmux.vim"]
+	path = .vim/bundle/tmux.vim
+	url = https://github.com/keith/tmux.vim.git
