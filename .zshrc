@@ -143,6 +143,7 @@ function fractal {
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR=~/.nvm
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
 
 source $(brew --prefix nvm)/nvm.sh
 antigen apply
