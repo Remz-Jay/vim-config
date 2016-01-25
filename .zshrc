@@ -1,23 +1,24 @@
+# zmodload zsh/zprof
 source "${HOME}/vim-config/antigen/antigen.zsh"
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
 antigen use oh-my-zsh
-antigen bundle brew
-antigen bundle composer
-antigen bundle forklift
+# antigen bundle brew
+# antigen bundle composer
+# antigen bundle forklift
 antigen bundle git
 antigen bundle git-extras
 antigen bundle github
 antigen bundle history
 antigen bundle history-substring-search
-antigen bundle jira
+# antigen bundle jira
 antigen bundle node
 antigen bundle npm
 antigen bundle osx
 antigen bundle pow
 antigen bundle python
 antigen bundle rake
-antigen bundle symfony2
-antigen bundle textmate
+# antigen bundle symfony2
+# antigen bundle textmate
 antigen bundle tmux
 
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -157,4 +158,4 @@ if [[ -o login ]] && [ -t "$fd" ] && [ `uname` = Darwin ]; then
 else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
-
+# zprof
