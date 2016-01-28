@@ -1,4 +1,4 @@
-" Modified: Mon 10 Mar 2014 10:13:54 AM CET 
+" Modified: Tue 26 Jan 2016 11:46:16 AM CET 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -327,7 +327,7 @@ map <leader>tb :TagbarToggle<cr>
 
 
 " Start NERDTree
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " Move cursor to main window
 autocmd VimEnter * wincmd p
 " Close vim if NERDTree is the last open buffer
