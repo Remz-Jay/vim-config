@@ -25,12 +25,21 @@ for linux based systems. (Which may or may not work in your situation.)
 * You have `UTF-8` locales installed, otherwise the `tmux` powerline setup will
 fail.
 
-For CentOS7, this would fix your prerequisites:
+For a clean CentOS7 installation, this would fix all of your prerequisites:
 ```
-sudo yum install -y zsh tmux vim ruby ruby-devel python ctags git
+sudo yum install -y zsh wget vim ruby ruby-devel python ctags git
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
 sudo pip install powerline-status
+sudo yum install -y libevent-devel ncurses ncurses-devel
+wget https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz
+tar xzvf tmux-2.1.tar.gz
+cd tmux-2.1
+./configure
+make
+sudo make install
+sudo localedef -c -f UTF-8 -i en_US en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 ```
 
 ## Installation
@@ -42,6 +51,17 @@ git clone https://github.com/Remz-Jay/vim-config.git
 cd vim-config
 ./linux-bootstrap.sh
 ```
+
+Then change your shell to `zsh` if you haven't done already and log in again.
+```
+[vagrant@puppet vim-config]$ chsh
+Changing shell for vagrant.
+New shell [/bin/bash]: /bin/zsh
+Password:
+Shell changed.
+[vagrant@puppet vim-config]$ logout
+```
+
 Fix configuration in `.zshrc` and other files immediately after installation to
 match your situation; It's highly unlikely that your setup will work 100% OK
 unless your username is `remco` and your `$PATH` matches mine.
