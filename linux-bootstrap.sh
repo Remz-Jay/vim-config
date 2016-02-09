@@ -51,7 +51,7 @@ then
 	mv $home/.config/powerline $home/.config/powerline.original
 fi
 
-
+mkdir -p $home/.config
 ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
