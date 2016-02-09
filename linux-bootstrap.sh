@@ -11,11 +11,8 @@ fi
 if [ ! -d $home/powerline-shell ]
 then
 	cd $home/${PWD##*/}
-	git submodule update powerline-shell
+	git submodule update --init powerline-shell 
 	cd $home/${PWD##*/}/powerline-shell && ./install.py
-  #Patch the arrow character in the font, as it is currently broken, see:
-  #https://github.com/milkbikis/powerline-shell/pull/69
-	curl https://github.com/milkbikis/powerline-shell/pull/69.patch | git apply
 	cd ..
 	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
