@@ -8,7 +8,7 @@
 	ignore = untracked
 [submodule ".vim/bundle/snipmate.vim"]
 	path = .vim/bundle/snipmate.vim
-	url = git://github.com/garbas/vim-snipmate.git 
+	url = https://github.com/garbas/vim-snipmate.git 
 	ignore = untracked
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
@@ -49,19 +49,19 @@
 	url = https://github.com/tristen/vim-sparkup.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
-	url = git://github.com/Lokaltog/powerline.git
+	url = https://github.com/Lokaltog/powerline.git
 [submodule ".vim/bundle/vim-eunuch"]
 	path = .vim/bundle/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule ".vim/bundle/tcomment"]
 	path = .vim/bundle/tcomment
-	url = git://github.com/tomtom/tcomment_vim.git
+	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "powerline-shell"]
 	path = powerline-shell
-	url = git://github.com/milkbikis/powerline-shell.git
+	url = https://github.com/milkbikis/powerline-shell.git
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts
@@ -76,10 +76,10 @@
 	url = https://github.com/honza/vim-snippets.git
 [submodule ".vim/bundle/phpcomplete.vim"]
 	path = .vim/bundle/phpcomplete.vim
-	url = git://github.com/shawncplus/phpcomplete.vim.git
+	url = https://github.com/shawncplus/phpcomplete.vim.git
 [submodule ".vim/bundle/puppet"]
 	path = .vim/bundle/puppet
-	url = git://github.com/rodjek/vim-puppet.git
+	url = https://github.com/rodjek/vim-puppet.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
