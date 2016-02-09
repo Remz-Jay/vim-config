@@ -15,19 +15,22 @@ for linux based systems. (Which may or may not work in your situation.)
 
 ## Prerequisites
 * You have `zsh` installed
-* You have `tmux` installed
+* You have `tmux` installed (`2.1`+ or you will have issues with the supplied
+		`.tmux.conf` )
 * You have `vim` installed and compiled with `ruby` and `python` support
 * You have `ruby`, `ruby-devel`, `python` and `python-pip` installed
 * You have `powerline` installed from either Git or `pip`. (See: 
 		https://powerline.readthedocs.org/en/latest/installation.html )
 * `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
+* You have `UTF-8` locales installed, otherwise the `tmux` powerline setup will
+fail.
 
 For CentOS7, this would fix your prerequisites:
 ```
 sudo yum install -y zsh tmux vim ruby ruby-devel python ctags git
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
-pip install git+git://github.com/powerline/powerline --upgrade
+sudo pip install powerline-status
 ```
 
 ## Installation
