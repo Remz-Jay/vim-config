@@ -42,6 +42,9 @@ git clone https://github.com/Remz-Jay/vim-config.git
 cd vim-config
 ./linux-bootstrap.sh
 ```
+Fix configuration in `.zshrc` and other files immediately after installation to
+match your situation; It's highly unlikely that your setup will work 100% OK
+unless your username is `remco` and your `$PATH` matches mine.
 
 This installer will also install `powerline-shell` and `oh-my-zsh` for you if they
 do not already exist.

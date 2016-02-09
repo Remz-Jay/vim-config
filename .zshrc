@@ -146,7 +146,10 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR=~/.nvm
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
 
-source $(brew --prefix nvm)/nvm.sh
+if [ `uname` = Darwin ]; then 
+	source $(brew --prefix nvm)/nvm.sh
+fi
+
 antigen apply
 
 # Automatically start a new tmux session if none are active.
