@@ -17,9 +17,13 @@ for linux based systems. (Which may or may not work in your situation.)
 * You have `zsh` installed
 * You have `tmux` installed
 * You have `vim` installed and compiled with `ruby` and `python` support
-* You have both `ruby` and `python` installed
+* You have `ruby`, `ruby-devel` and `python` installed
 * `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
 
+For CentOS7, this would fix your prerequisites:
+```
+sudo yum install -y zsh tmux vim ruby ruby-devel python ctags git
+```
 
 ## Installation
 Installation on any Linux or OSX machine is pretty straightforward:
