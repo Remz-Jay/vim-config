@@ -11,21 +11,7 @@
 		],
 		"right": [
 			{
-				"function": "weather",
-				"args": {
-					"unit": "C",
-					"location_query": "tilburg, netherlands"
-				}
-			},
-			{
 				"function": "system_load"
-			},
-			{
-				"function": "external_ip",
-				"args": {
-					"query_url": "http://icanhazip.com/",
-					"interval": 600
-				}
 			},
 			{
 				"function": "date",
