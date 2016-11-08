@@ -145,6 +145,14 @@ function fractal {
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR=~/.nvm
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+if [ -e ~/.secrets ]; then
+	source ~/.secrets
+fi
 
 if [ `uname` = Darwin ]; then 
 	source $(brew --prefix nvm)/nvm.sh
@@ -156,7 +164,7 @@ antigen apply
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
 if [[ -o login ]] && [ -t "$fd" ] && [ `uname` = Darwin ]; then
-#	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	$HOME/tmux-launch.sh
 else
 	if [ "$TMUX" = "" ]; then tmux; fi
