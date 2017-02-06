@@ -21,8 +21,8 @@ antigen bundle rake
 # antigen bundle textmate
 antigen bundle tmux
 
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle StackExchange/blackbox
+# antigen bundle zsh-users/zsh-syntax-highlighting
 
 # antigen bundle arialdomartini/oh-my-git
 # antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
@@ -159,7 +159,7 @@ if [ `uname` = Darwin ]; then
 fi
 
 antigen apply
-
+ssh-add -A &> /dev/null
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
