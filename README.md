@@ -24,10 +24,11 @@ for linux based systems. (Which may or may not work in your situation.)
 * `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
 * You have `UTF-8` locales installed, otherwise the `tmux` powerline setup will
 fail.
+* You have `fontconfig` installed if you're going to be using the powerline-fonts.
 
 For a clean CentOS7 installation, this would fix all of your prerequisites:
 ```
-sudo yum install -y zsh wget vim ruby ruby-devel python ctags git
+sudo yum install -y zsh wget vim ruby ruby-devel python ctags git fontconfig
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
 sudo pip install powerline-status
