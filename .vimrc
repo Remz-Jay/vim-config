@@ -1,4 +1,4 @@
-" Modified: Tue 26 Jan 2016 11:46:16 AM CET 
+" Modified: Sat 20 May 2017 09:09:10 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -13,8 +13,8 @@ endtry
 
 " initialize an empty array for disabled pathogen plugins
 let g:pathogen_disabled = []
-
 " call add(g:pathogen_disabled, 'sparkup')
+
 call pathogen#infect()
 
 set ai                 " always set autoindenting on
@@ -22,6 +22,7 @@ set ai                 " always set autoindenting on
 filetype on
 filetype plugin on
 filetype indent on
+syntax on
 "set backspace=2      " allow backspacing over everything in insert mode
 " allow <BkSpc> to delete line breaks, beyond the start of the current 
 " insertion, and over indentations:
@@ -53,7 +54,7 @@ set noexpandtab
 set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
-set pastetoggle=<F11>
+set pastetoggle=<F5>
 set ruler              " show the cursor position all the time
 "if exists('+colorcolumn')
 "	set colorcolumn=+1
@@ -100,9 +101,6 @@ set mouse=a
 " powerline statusbar
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
-syntax enable
-
-
 " Set up pretty colors
 set background=dark
 let myColorscheme = 'solarized'
@@ -112,7 +110,7 @@ let myColorscheme = 'solarized'
 if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
 	let myColorscheme = 'typofree'
 endif
-if $USER == 'remco'
+if $USER == 'remco' || $USER == 'roverdijk'
 	set number "show line numbers
 endif
 
@@ -133,9 +131,9 @@ let g:mapleader = ","
 
 " Fast editing of the .vimrc
 map <leader>e :tabedit! ~/.vimrc<cr>
+
 " When vimrc is edited, reload it
 autocmd! bufwritepost ~/.vimrc source ~/.vimrc
-
 
 " Fast editing of the colorscheme
 silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>"
@@ -338,9 +336,20 @@ map <leader>nt :NERDTreeToggle<cr>
 let g:sparkupNextMapping = '<c-n>'
 let g:sparkupExecuteMapping = '<c-e>'
 
+" Set some sane defaults before customizing SuperTab etc.
+set omnifunc=syntaxcomplete#Complete
+set completefunc=syntaxcomplete#Complete
+
 " PHP Code completion
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " Add PHP Omni Completion to SuperTab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
+let g:SuperTabDefaultCompletionType = "context"
+
 " http://amix.dk/vim/vimrc.html
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  \ endif
