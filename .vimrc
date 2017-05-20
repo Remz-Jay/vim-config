@@ -1,4 +1,4 @@
-" Modified: Sat 20 May 2017 09:09:10 PM CEST 
+" Modified: Sat 20 May 2017 10:38:49 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -353,3 +353,9 @@ autocmd FileType *
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
   \ endif
+
+" fix common typos
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
