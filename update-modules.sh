@@ -14,4 +14,6 @@ cd ../
 fc-cache -vf ./powerline-fonts
 echo Clearing VIM View Cache
 find ./.vim/view -type f -exec rm {} +
+echo Updating :help documentation
+vim -c "Helptags|q"
 git status
