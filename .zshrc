@@ -1,3 +1,5 @@
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
 # zmodload zsh/zprof
 source "${HOME}/vim-config/antigen/antigen.zsh"
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
@@ -20,7 +22,7 @@ antigen bundle rake
 # antigen bundle symfony2
 # antigen bundle textmate
 antigen bundle tmux
-
+antigen bundle vagrant
 antigen bundle StackExchange/blackbox
 # antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -40,10 +42,18 @@ antigen theme robbyrussell
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias jump="ssh -A -t bulwark ssh -A"
-alias runsalt="ssh -A -t root@puppet.maxserv.com salt"
 alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-server\""
 alias know="vim ~/.ssh/known_hosts"
+alias hosts="sudo vim /etc/hosts"
+
+# git aliases
+alias gpom="git push origin master"
+alias gpush="git push origin HEAD:refs/for/develop"
+
+# recursive grep. Function, because I'm too lazy to type the closing dot.
+function rg {
+	grep -rin $1 .
+}
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -82,10 +92,6 @@ COMPLETION_WAITING_DOTS="true"
 export PATH=\
 /usr/local/bin:\
 /usr/local/sbin:\
-/Users/remco/.rvm/gems/ruby-1.9.3-p362/bin:\
-/Users/remco/.rvm/gems/ruby-1.9.3-p362@global/bin:\
-/Users/remco/.rvm/rubies/ruby-1.9.3-p362/bin:\
-/Users/remco/.rvm/bin:\
 /usr/bin:\
 /bin:\
 /usr/sbin:\
@@ -94,6 +100,7 @@ export PATH=\
 $PATH
 
 export LANG=nl_NL.UTF-8
+export LC_ALL=nl_NL.UTF-8
 
 function powerline_precmd() {
 	export PS1="$(~/powerline-shell.py $? --shell zsh)"
@@ -126,6 +133,8 @@ expand-or-complete-with-dots() {
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
+bindkey "^[[1;2D" backward-word
+bindkey "^[[1;2C" forward-word
 
 function fractal {
    local lines columns colour a b p q i pnew
@@ -144,19 +153,18 @@ function fractal {
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR=~/.nvm
-export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
+# export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
-
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 if [ -e ~/.secrets ]; then
 	source ~/.secrets
+else 
+	print "404: .secrets file not found."
 fi
 
-if [ `uname` = Darwin ]; then 
-	source $(brew --prefix nvm)/nvm.sh
-fi
+# if [ `uname` = Darwin ]; then 
+# 	source $(brew --prefix nvm)/nvm.sh
+# fi
 
 antigen apply
 ssh-add -A &> /dev/null
