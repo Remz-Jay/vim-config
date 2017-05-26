@@ -49,7 +49,7 @@ alias hosts="sudo vim /etc/hosts"
 # git aliases
 alias gpom="git push origin master"
 alias gpush="git push origin HEAD:refs/for/develop"
-
+alias gs="git status"
 # recursive grep. Function, because I'm too lazy to type the closing dot.
 function rg {
 	grep -rin $1 .
