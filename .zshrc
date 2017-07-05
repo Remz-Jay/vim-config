@@ -4,7 +4,7 @@ export COLORTERM="truecolor"
 source "${HOME}/vim-config/antigen/antigen.zsh"
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
 antigen use oh-my-zsh
-# antigen bundle brew
+antigen bundle brew
 # antigen bundle composer
 # antigen bundle forklift
 antigen bundle git
@@ -14,7 +14,7 @@ antigen bundle history
 antigen bundle history-substring-search
 # antigen bundle jira
 antigen bundle node
-antigen bundle npm
+# antigen bundle npm
 antigen bundle osx
 antigen bundle pow
 antigen bundle python
@@ -23,7 +23,7 @@ antigen bundle rake
 # antigen bundle textmate
 antigen bundle tmux
 antigen bundle vagrant
-antigen bundle StackExchange/blackbox
+# antigen bundle stackexchange/blackbox
 # antigen bundle zsh-users/zsh-syntax-highlighting
 
 # antigen bundle arialdomartini/oh-my-git
@@ -45,11 +45,17 @@ antigen theme robbyrussell
 alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-server\""
 alias know="vim ~/.ssh/known_hosts"
 alias hosts="sudo vim /etc/hosts"
-
+alias psg="ps aux | grep -i "
 # git aliases
 alias gpom="git push origin master"
+alias gpull="git pull origin develop"
 alias gpush="git push origin HEAD:refs/for/develop"
 alias gs="git status"
+# docker aliases
+alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
+alias drma='docker rm $(docker ps -aq)'
+alias dll='docker logs -f $(docker ps -q | head -1)'
+
 # recursive grep. Function, because I'm too lazy to type the closing dot.
 function rg {
 	grep -rin $1 .
@@ -97,10 +103,14 @@ export PATH=\
 /usr/sbin:\
 /sbin:\
 /opt/X11/bin:\
+/opt/puppetlabs/bin:\
+$HOME/.gem/ruby/2.4.0/bin:\
 $PATH
 
 export LANG=nl_NL.UTF-8
 export LC_ALL=nl_NL.UTF-8
+
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 function powerline_precmd() {
 	export PS1="$(~/powerline-shell.py $? --shell zsh)"
@@ -135,6 +145,16 @@ zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 bindkey "^[[1;2D" backward-word
 bindkey "^[[1;2C" forward-word
+# bindkey "${terminfo[khome]}" beginning-of-line
+# bindkey "${terminfo[kend]}" end-of-line
+
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[7~" beginning-of-line
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
 
 function fractal {
    local lines columns colour a b p q i pnew
@@ -167,7 +187,7 @@ fi
 # fi
 
 antigen apply
-ssh-add -A &> /dev/null
+# ssh-add -A &> /dev/null
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
 # because tabs in iTerm2 don't work as expected anymore.
