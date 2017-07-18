@@ -60,6 +60,9 @@ alias dll='docker logs -f $(docker ps -q | head -1)'
 function rg {
 	grep -rin $1 .
 }
+function dbash {
+	docker exec -it $1 /bin/bash;
+}
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -125,7 +128,7 @@ function install_powerline_precmd() {
 	precmd_functions+=(powerline_precmd)
 }
 
- install_powerline_precmd
+install_powerline_precmd
 #if [[ -r ~/.credentials ]]; then
 #	source ~/.credentials
 #fi
