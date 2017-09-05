@@ -15,4 +15,8 @@ if [[ -r ~/.credentials ]]; then
     source ~/.credentials
 fi
 
+if [[ -r ~/.secrets ]]; then
+	source ~/.secrets
+fi
+
 # export PROMPT_COMMAND="_update_ps1"
