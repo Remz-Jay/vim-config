@@ -1,5 +1,7 @@
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
+export EDITOR='vim'
+
 # zmodload zsh/zprof
 source "${HOME}/vim-config/antigen/antigen.zsh"
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
@@ -22,6 +24,7 @@ antigen bundle rake
 # antigen bundle symfony2
 # antigen bundle textmate
 antigen bundle tmux
+antigen bundle tmuxinator
 antigen bundle vagrant
 # antigen bundle stackexchange/blackbox
 # antigen bundle zsh-users/zsh-syntax-highlighting
@@ -116,19 +119,22 @@ export LC_ALL=nl_NL.UTF-8
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 function powerline_precmd() {
-	export PS1="$(~/powerline-shell.py $? --shell zsh)"
+    PS1="$(~/powerline-shell.py $? --shell zsh --colorize-hostname --mode patched --cwd-mode fancy 2> /dev/null)"
 }
 
 function install_powerline_precmd() {
-	for s in "${precmd_functions[@]}"; do
-  	if [ "$s" = "powerline_precmd" ]; then
-    	return
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
     fi
-	done
-	precmd_functions+=(powerline_precmd)
+  done
+  precmd_functions+=(powerline_precmd)
 }
 
-install_powerline_precmd
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+
 #if [[ -r ~/.credentials ]]; then
 #	source ~/.credentials
 #fi
@@ -189,6 +195,17 @@ fi
 # 	source $(brew --prefix nvm)/nvm.sh
 # fi
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+# SSH host autocompletion
+local knownhosts
+knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
+zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
+
 antigen apply
 # ssh-add -A &> /dev/null
 # Automatically start a new tmux session if none are active.
@@ -201,3 +218,5 @@ else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
 # zprof
+
+
