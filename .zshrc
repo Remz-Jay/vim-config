@@ -45,27 +45,40 @@ antigen theme robbyrussell
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-server\""
 alias know="vim ~/.ssh/known_hosts"
 alias hosts="sudo vim /etc/hosts"
 alias psg="ps aux | grep -i "
+
 # git aliases
 alias gpom="git push origin master"
 alias gpull="git pull origin develop"
 alias gpush="git push origin HEAD:refs/for/develop"
 alias gs="git status"
+
 # docker aliases
 alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
 alias drma='docker rm $(docker ps -aq)'
 alias dll='docker logs -f $(docker ps -q | head -1)'
 
 # recursive grep. Function, because I'm too lazy to type the closing dot.
-function rg {
+function recgrep {
 	grep -rin $1 .
 }
+ 
+# Execute bash inside docker container $1
 function dbash {
 	docker exec -it $1 /bin/bash;
 }
+
+#Clean up known_hosts when a host key changed using this macro and reconnect.
+function sssh() {
+	ssh-keygen -R $1
+	ssh-keyscan $1 >> ~/.ssh/known_hosts
+	ssh $1
+}
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -110,7 +123,9 @@ export PATH=\
 /sbin:\
 /opt/X11/bin:\
 /opt/puppetlabs/bin:\
+$HOME/.rvm/bin:\
 $HOME/.gem/ruby/2.4.0/bin:\
+/usr/local/opt/postgresql@9.4/bin:\
 $PATH
 
 export LANG=nl_NL.UTF-8
@@ -121,7 +136,6 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 function powerline_precmd() {
     PS1="$(~/powerline-shell.py $? --shell zsh --colorize-hostname --mode patched --cwd-mode fancy 2> /dev/null)"
 }
-
 function install_powerline_precmd() {
   for s in "${precmd_functions[@]}"; do
     if [ "$s" = "powerline_precmd" ]; then
@@ -130,7 +144,6 @@ function install_powerline_precmd() {
   done
   precmd_functions+=(powerline_precmd)
 }
-
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
@@ -138,6 +151,7 @@ fi
 #if [[ -r ~/.credentials ]]; then
 #	source ~/.credentials
 #fi
+
 
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
@@ -180,7 +194,6 @@ function fractal {
     done
 }
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR=~/.nvm
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
@@ -201,12 +214,15 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
+source <(kubectl completion zsh)
+
 # SSH host autocompletion
 local knownhosts
 knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
 zstyle ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
 
 antigen apply
+
 # ssh-add -A &> /dev/null
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
@@ -218,5 +234,3 @@ else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
 # zprof
-
-
