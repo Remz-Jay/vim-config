@@ -11,6 +11,10 @@
 		],
 		"right": [
 			{
+				"function": "powerline_kubernetes.kubernetes",
+				"priority": 30
+			},
+			{
 				"function": "system_load"
 			},
 			{

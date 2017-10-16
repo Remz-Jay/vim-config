@@ -1,6 +1,8 @@
 {
 	"name": "Default",
 	"groups": {
+    "kubernetes":                { "fg": "gray8",           "bg": "darkestblue", "attrs": [] },
+    "kubernetes:divider":        { "fg": "gray4",           "bg": "darkestblue", "attrs": [] },
 		"background":                { "fg": "white", "bg": "gray0", "attrs": [] },
 		"background:divider":        { "fg": "gray5", "bg": "gray0", "attrs": [] },
 		"session":                   { "fg": "black", "bg": "gray10", "attrs": ["bold"] },
