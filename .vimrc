@@ -1,4 +1,4 @@
-" Modified: Sat 20 May 2017 10:38:49 PM CEST 
+" Modified: Thu 19 Oct 2017 03:23:07 PM CEST
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -24,7 +24,7 @@ filetype plugin on
 filetype indent on
 syntax on
 "set backspace=2      " allow backspacing over everything in insert mode
-" allow <BkSpc> to delete line breaks, beyond the start of the current 
+" allow <BkSpc> to delete line breaks, beyond the start of the current
 " insertion, and over indentations:
 set backspace=eol,start,indent
 silent execute '!mkdir -p ~/.vim/backup'
@@ -149,6 +149,7 @@ nnoremap ; :
 nmap <F2> :w<C-M>
 nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
+map <F1> <Esc>
 
 " Use system-wide clipboard
 set clipboard+=unnamed
@@ -202,9 +203,9 @@ map <C-l> <C-w>l
 
 " Tab configuration
 map <leader>tn :tabnew<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 map <Left> :tabprevious<CR>
 map <Right> :tabnext<CR>
 
@@ -217,7 +218,7 @@ map <leader>cd :cd %:p:h<cr>
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
 	set switchbuf=usetab
 	set stal=2
@@ -344,7 +345,7 @@ set completefunc=syntaxcomplete#Complete
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " Add PHP Omni Completion to SuperTab
-" let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " http://amix.dk/vim/vimrc.html
