@@ -1,6 +1,6 @@
 {
 	"default_module": "powerline.segments.common",
-	"segments": {	
+	"segments": {
 		"left": [
 			{
 				"function": "battery",
