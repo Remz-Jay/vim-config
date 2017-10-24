@@ -66,7 +66,7 @@ alias dll='docker logs -f $(docker ps -q | head -1)'
 function recgrep {
 	grep -rin $1 .
 }
- 
+
 # Execute bash inside docker container $1
 function dbash {
 	docker exec -it $1 /bin/bash;
@@ -132,10 +132,13 @@ export LANG=nl_NL.UTF-8
 export LC_ALL=nl_NL.UTF-8
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+#Prevent less from taking full screen when the content is less than a single page
+export LESS="-F -X $LESS"
 
 function powerline_precmd() {
-    PS1="$(~/powerline-shell.py $? --shell zsh --colorize-hostname --mode patched --cwd-mode fancy 2> /dev/null)"
+    PS1="$(powerline-shell --shell zsh $?)"
 }
+
 function install_powerline_precmd() {
   for s in "${precmd_functions[@]}"; do
     if [ "$s" = "powerline_precmd" ]; then
@@ -144,6 +147,7 @@ function install_powerline_precmd() {
   done
   precmd_functions+=(powerline_precmd)
 }
+
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
@@ -200,11 +204,11 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/h
 
 if [ -e ~/.secrets ]; then
 	source ~/.secrets
-else 
+else
 	print "404: .secrets file not found."
 fi
 
-# if [ `uname` = Darwin ]; then 
+# if [ `uname` = Darwin ]; then
 # 	source $(brew --prefix nvm)/nvm.sh
 # fi
 

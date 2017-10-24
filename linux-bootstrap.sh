@@ -11,10 +11,8 @@ fi
 if [ ! -d $home/powerline-shell ]
 then
 	cd $home/${PWD##*/}
-	git submodule update --init powerline-shell 
-	cd $home/${PWD##*/}/powerline-shell && ./install.py
-	cd ..
-	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
+	git submodule update --init powerline-shell
+	cd $home/${PWD##*/}/powerline-shell && python setup.py install
 fi
 if [ ! -d $home/.oh-my-zsh ]
 then
@@ -57,7 +55,7 @@ ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
 ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
 ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
-ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline 
+ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline
 ln -s $home/${PWD##*/}/tmux-launch.sh $home/tmux-launch.sh
 chmod u+x $home/tmux-launch.sh
 
