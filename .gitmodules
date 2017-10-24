@@ -8,7 +8,7 @@
 	ignore = untracked
 [submodule ".vim/bundle/snipmate.vim"]
 	path = .vim/bundle/snipmate.vim
-	url = https://github.com/garbas/vim-snipmate.git 
+	url = https://github.com/garbas/vim-snipmate.git
 	ignore = untracked
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
