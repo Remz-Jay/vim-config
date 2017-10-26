@@ -1,4 +1,6 @@
 #!/bin/sh
+rm antigen.zsh
+curl -Lq git.io/antigen > antigen.zsh
 cd powerline-shell
 git stash
 cd ..
