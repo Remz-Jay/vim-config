@@ -57,6 +57,7 @@ ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
 ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
 ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline
 ln -s $home/${PWD##*/}/tmux-launch.sh $home/tmux-launch.sh
+ln -s $home/${PWD##*/}/.powerline-shell.json $home/.powerline-shell.json
 chmod u+x $home/tmux-launch.sh
 
 # Initialize submodules
