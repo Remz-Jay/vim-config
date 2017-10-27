@@ -1,6 +1,7 @@
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 export EDITOR='vim'
+alias dircolors='gdircolors'
 
 # zmodload zsh/zprof
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
@@ -21,7 +22,9 @@ antigen bundle rake
 antigen bundle tmux
 antigen bundle tmuxinator
 antigen bundle vagrant
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle docker
+# antigen bundle joel-porquet/zsh-dircolors-solarized.git
+# antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle composer
 # antigen bundle forklift
 # antigen bundle jira
@@ -208,6 +211,14 @@ if [ -e ~/.secrets ]; then
 else
 	print "404: .secrets file not found."
 fi
+
+# ls with color
+alias ls='gls --color'
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+eval $( dircolors -b $HOME/LS_COLORS )
+source $HOME/vim-config/zsh-syntax-highlighting-filetypes.zsh
+autoload -Uz compinit
+compinit
 
 # if [ `uname` = Darwin ]; then
 # 	source $(brew --prefix nvm)/nvm.sh
