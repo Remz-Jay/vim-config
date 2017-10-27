@@ -1,4 +1,4 @@
-" Modified: Thu 19 Oct 2017 03:23:07 PM CEST
+" Modified: Fri 27 Oct 2017 10:37:38 PM CEST
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -103,21 +103,12 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Set up pretty colors
 set background=dark
-let myColorscheme = 'solarized'
-"let myColorscheme = 'inkpot'
-
-" Personal preferences for users
-if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
-	let myColorscheme = 'typofree'
-endif
-if $USER == 'remco' || $USER == 'roverdijk'
-	set number "show line numbers
-endif
+let myColorscheme = 'default'
+set number "show line numbers
 
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
-	let g:solarized_termtrans = 1
 else
 	colorscheme default
 endif
