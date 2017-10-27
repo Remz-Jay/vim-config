@@ -26,18 +26,17 @@
 						"unit": "C",
 						"location_query": "utrecht, netherlands",
 						"icons": {
-	            "day":           "☀️",
-	            "blustery":      "💨",
-	            "rainy":         "🌧️",
-	            "cloudy":        "☁️",
-	            "snowy":         "❄️",
-	            "stormy":        "🌩️",
-	            "foggy":         "🌫️",
-	            "sunny":         "🌞",
-	            "night":         "🌙",
-	            "windy":         "🌬️",
-	            "not_available": "🤷‍♂️",
-	            "unknown":       "⚠️"
+							"day":           "☀️  ",
+							"rainy":         "🌧️ ",
+							"cloudy":        "☁️ ",
+							"snowy":         "❄ ️",
+							"stormy":        "🌩️ ",
+							"foggy":         "🌫️ ",
+							"sunny":         "🌞 ",
+							"night":         "🌙 ",
+							"windy":         "🌬️ ",
+							"not_available": "🤷‍♂️ ",
+							"unknown":       "⚠ ️"
 						}
 					}
 			},
