@@ -1,4 +1,4 @@
-" Modified: Mon 30 Oct 2017 03:16:58 PM CET
+" Modified: Mon 30 Oct 2017 03:54:39 PM CET
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -46,7 +46,7 @@ set cmdheight=2        " Helps avoiding 'hit enter' prompt
 set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
 set foldminlines=5
-set foldlevelstart=1
+set foldlevelstart=99  " 99 effectively disables auto-folds. see :help foldlevelstart
 set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
@@ -203,7 +203,6 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <Left> :tabprevious<CR>
 map <Right> :tabnext<CR>
-
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
