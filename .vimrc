@@ -1,4 +1,4 @@
-" Modified: Fri 27 Oct 2017 10:37:38 PM CEST
+" Modified: Mon 30 Oct 2017 03:16:58 PM CET
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -142,6 +142,10 @@ nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
 map <F1> <Esc>
 
+" Open/Close folds with space
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " Use system-wide clipboard
 set clipboard+=unnamed
 
@@ -246,31 +250,6 @@ augroup resCur
 augroup END
 
 endif " has("autocmd")
-
-
-" open and close folds
-" Toggle fold state between closed and opened.
-"
-" If there is no fold at current line, just moves forward.
-" If it is present, reverse its state.
-fun! ToggleFold()
-if foldlevel('.') == 0
-	normal! l
-else
-	if foldclosed('.') < 0
-		. foldclose
-	else
-		. foldopen
-	endif
-endif
-" Clear status line
-echo
-endfun
-
-" Map this function to Space key.
-nnoremap <space> :call ToggleFold()<cr>
-vnoremap <space> :call ToggleFold()<cr>
-
 
 " have the usual indentation keystrokes still work in visual mode:
 vnoremap <C-T> >
