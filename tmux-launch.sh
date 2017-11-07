@@ -1,8 +1,8 @@
-#!/bin/sh 
+#!/bin/sh
 export PATH=$PATH:/usr/local/bin
 
 # abort if we're already inside a TMUX session
-[ "$TMUX" == "" ] || exit 0 
+[ "$TMUX" == "" ] || exit 0
 
 # startup a "default" session if none currently exists
 tmux has-session -t ops 2>/dev/null || tmux new-session -s ops
@@ -28,9 +28,9 @@ do
 			  "Regular ZSH Shell")
 						break
 						;;
-        *) 
-            tmux attach-session -t $opt 
+        *)
+            tmux attach-session -t $opt
             break
-            ;; 
+            ;;
     esac
 done
