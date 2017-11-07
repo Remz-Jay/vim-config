@@ -54,6 +54,7 @@ alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-s
 alias know="vim ~/.ssh/known_hosts"
 alias hosts="sudo vim /etc/hosts"
 alias psg="ps aux | grep -i "
+alias gd="git diff --ws-error-highlight=new,old"
 
 # git aliases
 alias gpom="git push origin master"
@@ -76,11 +77,16 @@ function dbash {
 	docker exec -it $1 /bin/bash;
 }
 
-#Clean up known_hosts when a host key changed using this macro and reconnect.
+# Clean up known_hosts when a host key changed using this macro and reconnect.
 function sssh() {
 	ssh-keygen -R $1
 	ssh-keyscan $1 >> ~/.ssh/known_hosts
 	ssh $1
+}
+
+# Add .bashrc and .vimrc to vagrant-ssh
+function vs (){
+  vagrant ssh $1 -- -At  "echo \"$(cat ~/vim-config/ssh-alias)\" > \$HOME/.bashrc; echo \"$(cat ~/vim-config/ssh-vimrc)\" > \$HOME/.vimrc; bash --rcfile \$HOME/.bashrc "
 }
 
 # Set to this to use case-sensitive completion
@@ -219,6 +225,8 @@ eval $( dircolors -b $HOME/LS_COLORS )
 source $HOME/vim-config/zsh-syntax-highlighting-filetypes.zsh
 autoload -Uz compinit
 compinit
+# Enable ssh autocompletion on the s alias (see .secrets)
+compdef s=ssh
 
 # if [ `uname` = Darwin ]; then
 # 	source $(brew --prefix nvm)/nvm.sh

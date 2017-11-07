@@ -1,0 +1,11 @@
+export EDITOR=vi;
+if [ \$EUID -eq 0 ]; then
+  PS1='\[\033[01;31m\]\u@\h: \w #\[\033[00m\] ';
+else
+  PS1='\[\033[01;32m\]\u@\h: \w >\[\033[00m\] ';
+fi
+alias sr='sudo su -c \"bash  --rcfile $HOME/.bashrc\" -l || sudo -i';
+alias sb='sudo -u root bash --rcfile $HOME/.bashrc'
+alias pat='puppet agent -t';
+alias pae='puppet agent --enable';
+alias pad='puppet agent --disable roverdijk';
