@@ -11,7 +11,7 @@ cd .vim/bundle/powerline
 git reset --hard origin/develop
 cd ../../../powerline-shell
 git stash pop
-./install.py
+./setup.py install
 cd ../
 fc-cache -vf ./powerline-fonts
 echo Clearing VIM View Cache
