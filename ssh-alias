@@ -8,4 +8,6 @@ alias sr='sudo su -c \"bash  --rcfile $HOME/.bashrc\" -l || sudo -i';
 alias sb='sudo -u root bash --rcfile $HOME/.bashrc'
 alias pat='puppet agent -t';
 alias pae='puppet agent --enable';
-alias pad='puppet agent --disable roverdijk';
+alias pad='puppet agent --disable $USER';
+alias ipt='iptables -L -v -n'
+alias ipvs='ipvsadm -L'
