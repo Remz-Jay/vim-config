@@ -1,4 +1,4 @@
-" Modified: Mon 30 Oct 2017 03:54:39 PM CET
+" Modified: Wed 08 Nov 2017 11:57:27 PM CET
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -31,6 +31,8 @@ silent execute '!mkdir -p ~/.vim/backup'
 set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
 "helptags ~/.vim/doc
+set ml								 " enable modelines
+set list							 " show whitespace
 set backup             " keep a backup file
 set cindent
 set complete=k,.,w,b,u,t,i
@@ -100,6 +102,10 @@ set mouse=a
 
 " powerline statusbar
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" golint linting
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 " Set up pretty colors
 set background=dark
