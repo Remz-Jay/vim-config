@@ -1,4 +1,4 @@
-export TERM="xterm-256color"
+export TERM="screen-256color"
 export COLORTERM="truecolor"
 export EDITOR='vim'
 
@@ -100,6 +100,7 @@ alias mosh="mosh --server=\"LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/mosh-s
 alias know="vim ~/.ssh/known_hosts"
 alias hosts="sudo vim /etc/hosts"
 alias psg="ps aux | grep -i "
+alias vim="nvim"
 
 # git aliases
 alias gd="git diff --ws-error-highlight=new,old"
@@ -126,6 +127,11 @@ function dbash {
 	docker exec -it $1 /bin/bash;
 }
 
+# highlight
+function show {
+	grep --color -E "$1|$" $2
+}
+
 # Clean up known_hosts when a host key changed using this macro and reconnect.
 function sssh() {
 	ssh-keygen -R $1
@@ -136,7 +142,7 @@ function sssh() {
 
 # Add .bashrc and .vimrc to vagrant-ssh
 function vs (){
-  vagrant ssh $1 -- -At  "echo \"$(cat ~/vim-config/ssh-alias)\" > \$HOME/.bashrc; echo \"$(cat ~/vim-config/ssh-vimrc)\" > \$HOME/.vimrc; bash --rcfile \$HOME/.bashrc "
+	vagrant ssh $1 -- -At  "echo \"$(cat ~/vim-config/ssh-alias)\" > \$HOME/.bashrc; echo \"$(cat ~/vim-config/ssh-vimrc)\" > \$HOME/.vimrc; bash --rcfile \$HOME/.bashrc "
 }
 #compdef vs='vagrant ssh'
 
@@ -204,10 +210,11 @@ done
 alias reload!='. ~/.zshrc'
 
 expand-or-complete-with-dots() {
-  echo -n "\e[31m......\e[0m"
-  zle expand-or-complete
-  zle redisplay
+	echo -n "\e[31m......\e[0m"
+	zle expand-or-complete
+	zle redisplay
 }
+
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 bindkey "^[[1;2D" backward-word
@@ -224,18 +231,18 @@ bindkey "\e[3~" delete-char
 bindkey "\e[2~" quoted-insert
 
 function fractal {
-   local lines columns colour a b p q i pnew
-   ((columns=COLUMNS-1, lines=LINES-1, colour=0))
-   for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
-       for ((a=-2.0; a<=1; a+=3.0/columns)) do
-           for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < 32; i++)) do
-               ((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
-           done
-           ((colour=(i/4)%8))
-            echo -n "\\e[4${colour}m "
-        done
-        echo
-    done
+	local lines columns colour a b p q i pnew
+	((columns=COLUMNS-1, lines=LINES-1, colour=0))
+	for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
+		for ((a=-2.0; a<=1; a+=3.0/columns)) do
+			for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < 32; i++)) do
+				((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
+			done
+			((colour=(i/4)%8))
+			echo -n "\\e[4${colour}m "
+		done
+	echo
+	done
 }
 
 if [ -e ~/.secrets ]; then
