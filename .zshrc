@@ -1,16 +1,19 @@
-export TERM="screen-256color"
+# if ! [ "$TERM" = "xterm-kitty" ]; then 
+#    export TERM="screen-256color";
+# fi
+
 export COLORTERM="truecolor"
 export EDITOR='vim'
 
-export LANG=nl_NL.UTF-8
-export LC_ALL=nl_NL.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 #Prevent less from taking full screen when the content is less than a single page
 export LESS="-F -X -R $LESS"
 
 export GOPATH=$HOME/go
-export NVM_DIR=~/.nvm
+export NVM_DIR=$HOME/.nvm
 
 export PATH=\
 /usr/local/bin:\
@@ -20,11 +23,15 @@ export PATH=\
 /usr/sbin:\
 /sbin:\
 /opt/puppetlabs/bin:\
-$HOME/.gem/ruby/2.4.0/bin:\
+$HOME/.rbenv/shims:\
+$HOME/.rbenv/bin:\
 /usr/local/opt/postgresql@9.4/bin:\
 ${GOPATH//://bin:}/bin:\
 "/Applications/Visual Studio Code.app/Contents/Resources/app/bin":\
+$HOME/bin:\
 $PATH
+
+eval "$(rbenv init -)"
 
 # setopt complete_aliases
 # autoload -Uz compinit
@@ -37,40 +44,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # zmodload zsh/zprof
 # plugins=(brew composer forklift git git-extras github history history-substring-search jira node npm osx pow python rake symfony2 textmate tmux)
-plugins=(git kubectl osx tmux vagrant docker bundler)
-
-##########################################################
-## ANTIGEN BEGIN
-##########################################################
-#source "${HOME}/vim-config/antigen.zsh"
-#antigen use oh-my-zsh
-#antigen bundle brew
-#antigen bundle git
-#antigen bundle git-extras
-#antigen bundle github
-#antigen bundle history
-#antigen bundle history-substring-search
-#antigen bundle kubectl
-#antigen bundle node
-#antigen bundle osx
-#antigen bundle pow
-#antigen bundle python
-#antigen bundle rake
-#antigen bundle tmux
-#antigen bundle tmuxinator
-#antigen bundle vagrant
-#antigen bundle docker
-
-# antigen bundle joel-porquet/zsh-dircolors-solarized.git
-# antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle composer
-# antigen bundle forklift
-# antigen bundle jira
-# antigen bundle npm
-# antigen bundle symfony2
-# antigen bundle textmate
-# antigen bundle stackexchange/blackbox
-# antigen bundle arialdomartini/oh-my-git
+plugins=(git kubectl osx tmux vagrant docker bundler helm )
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -79,18 +53,36 @@ plugins=(git kubectl osx tmux vagrant docker bundler)
 # ZSH_THEME="robbyrussell"
 # See: https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(kubecontext dir rbenv virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history battery time os_icon)
-POWERLEVEL9K_COLOR_SCHEME='light'
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel9k/powerlevel9k"
-# antigen theme robbyrussell
-# antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+if [ "$TERM" = "xterm-kitty" ]; then
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status kubecontext dir rbenv virtualenv vcs)
+    POWERLEVEL9K_DISABLE_RPROMPT=true
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+    POWERLEVEL9K_OS_ICON_BACKGROUND="white"
+    POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
+    POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+    POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+    POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+    POWERLEVEL9K_KUBECONTEXT_FOREGROUND="025"
+    POWERLEVEL9K_KUBECONTEXT_BACKGROUND="253"
+    POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
+    POWERLEVEL9K_VCS_CLEAN_FOREGROUND='083'
+    POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='236'
+    POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='005'
+    POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='236'
+    POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='003'
+    POWERLEVEL9K_STATUS_OK_BACKGROUND='236'
 
-# antigen apply
-##########################################################
-## ANTIGEN END
-##########################################################
+else
+    # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(kubecontext dir rbenv virtualenv vcs)
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(kubecontext dir virtualenv vcs)
+    POWERLEVEL9K_DISABLE_RPROMPT=true
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history battery time os_icon);
+    POWERLEVEL9K_COLOR_SCHEME='light';
+    # POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+fi
+# POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -108,6 +100,7 @@ alias gpom="git push origin master"
 alias gpull="git pull origin develop"
 alias gpush="git push origin HEAD:refs/for/develop"
 alias gs="git status"
+alias noorig="find . -iname \"*.orig\" -delete"
 
 # docker aliases
 alias drmid='docker rmi $(docker images -f "dangling=true" -q)'
@@ -116,6 +109,9 @@ alias dll='docker logs -f $(docker ps -q | head -1)'
 
 # ls with color
 alias ls='gls --color'
+
+alias kctx=kubectx
+alias kns=kubens
 
 # recursive grep. Function, because I'm too lazy to type the closing dot.
 function recgrep {
@@ -181,28 +177,6 @@ COMPLETION_WAITING_DOTS="true"
 
 source $ZSH/oh-my-zsh.sh
 
-# function powerline_precmd() {
-#    PS1="$(powerline-shell --shell zsh $?)"
-# }
-
-# function install_powerline_precmd() {
-#  for s in "${precmd_functions[@]}"; do
-#    if [ "$s" = "powerline_precmd" ]; then
-#      return
-#    fi
-#  done
-#  precmd_functions+=(powerline_precmd)
-# }
-
-# if [ "$TERM" != "linux" ]; then
-#    install_powerline_precmd
-# fi
-
-#if [[ -r ~/.credentials ]]; then
-#	source ~/.credentials
-#fi
-
-
 for method in GET HEAD POST PUT DELETE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
@@ -246,16 +220,23 @@ function fractal {
 }
 
 if [ -e ~/.secrets ]; then
-	source ~/.secrets
+    source ~/.secrets
 else
 	print "ZSH/404: .secrets file not found."
 fi
 
+git-download(){
+    folder=${@/tree\/master/trunk}
+    folder=${folder/blob\/master/trunk}
+    svn export $folder
+}
+
 eval $( dircolors -b $HOME/LS_COLORS )
 source $HOME/vim-config/zsh-syntax-highlighting-filetypes.zsh
-# if [ `uname` = Darwin ]; then
-# 	source $(brew --prefix nvm)/nvm.sh
-# fi
+
+#if [ `uname` = Darwin ]; then
+#	source $(brew --prefix nvm)/nvm.sh
+#fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -264,6 +245,7 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # source <(kubectl completion zsh)
+source <(stern --completion=zsh)
 
 # SSH host autocompletion
 # local knownhosts
@@ -275,6 +257,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google
 # compdef '_dispatch ssh ssh' s
 compdef s=ssh
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # ssh-add -A &> /dev/null
 # Automatically start a new tmux session if none are active.
 # It would be wise to have iTerm2 keybindings set up if this line is active,
@@ -285,4 +269,5 @@ if [[ -o login ]] && [ -t "$fd" ] && [ `uname` = Darwin ]; then
 else
 	if [ "$TMUX" = "" ]; then tmux; fi
 fi
+
 # zprof

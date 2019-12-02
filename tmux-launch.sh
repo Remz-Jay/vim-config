@@ -4,6 +4,10 @@ export PATH=$PATH:/usr/local/bin
 # abort if we're already inside a TMUX session
 [ "$TMUX" == "" ] || exit 0
 
+# abort if we're in Kitty, in which we don't use TMUX
+# if [ -z $KITTY ]; then exit 0; fi
+# if [ "$TERM" = "xterm-kitty" ]; then exit 0; fi
+
 # startup a "default" session if none currently exists
 tmux has-session -t ops 2>/dev/null || tmux new-session -s ops
 

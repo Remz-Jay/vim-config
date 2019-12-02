@@ -18,29 +18,6 @@
 				"priority": 50
 			},
 			{
-				"function": "powerline.segments.common.net.external_ip"
-			},
-			{
-				"function": "powerline.segments.common.wthr.weather",
-					"args": {
-						"unit": "C",
-						"location_query": "utrecht, netherlands",
-						"icons": {
-							"day":           "☀️  ",
-							"rainy":         "🌧️ ",
-							"cloudy":        "☁️ ",
-							"snowy":         "❄ ️",
-							"stormy":        "🌩️ ",
-							"foggy":         "🌫️ ",
-							"sunny":         "🌞 ",
-							"night":         "🌙 ",
-							"windy":         "🌬️ ",
-							"not_available": "🤷‍♂️ ",
-							"unknown":       "⚠ ️"
-						}
-					}
-			},
-			{
 				"function": "powerline.segments.common.time.date"
 			},
 			{
